@@ -4,10 +4,10 @@ var playerScore = 0;
 var wins = 0;
 var losses = 0;
 
-var crystalImage = [];
+var crystalImage = ["assets/images/blueCrystal.jpg", "assets/images/greenCrystal.jpg", "assets/images/purpleCrystal.jpg", "assets/images/whiteCrystal.jpg"];
+
 // Functions
     //resetFunction
-
     function reset(){
         //clear out old crystals
         $(".crystalContainer").empty()
@@ -25,34 +25,54 @@ var crystalImage = [];
         //update player score on page .text
         $(".playerScore").text(playerScore);
     }
+
     //makeCrystalsFunction
     function makeCrystals() {
-        for (var i = 0; i < crystalImage.length; i++){
-            var image = $("<img>")
-            image.addClass("crystal")
-            image.attr("data-value", Math.floor(Math.random() * 12) +1)
-            image.attr("src", crystalImage[i])
-
-        }
-
-
-    }
         //for loop 0-4
-        //create image tag
+        for (var i = 0; i < crystalImage.length; i++){
+            //create image tag
+            var image = $("<img>");
             //add class to image crystal .attr
-        // random number 1-12
-        //source .attr
-        //pick crystal images randomly
-        //append image to page
+            image.addClass("crystal");
+            // random number 1-12
+            image.attr("data-value", Math.floor(Math.random() * 12) +1);
+            //source .attr
+            image.attr("src", crystalImage[i]);
+            //pick crystal images randomly
+            //append image to page
+            $(".crystalContainer").append(image);
+        }
+    }
 // Process
+$(document).ready(function() {
     //call reset game
+    reset()
+
     //document.on click
-        //$("div").on("click", ".crystal", function) {
-            // $(this)
-            //parseint
-                //add to score
-            //check if one or loss
-            //if won add to wins else losses
-                //alert out
-            //reset game
-        //}
+    $(".crystalContainer").on("click", ".crystal", function () {
+        $(this)
+        var crystalValue = ($(this).attr("data-value"))
+        //parseint
+            //add to score
+         crystalValue = parseInt(playerScore)
+        //check if won or loss
+        console.log(crystalValue)
+
+        if (playerScore === goalNumber) {
+            alert("CONGRATS! YOU WIN!!")
+            //if won add to wins 
+            win++
+        } else if (playerScore > goalNumber) {
+            alert("YOU LOSE!")
+            //else losses
+            losses++
+        }
+        
+    })
+    
+    //reset game
+    reset()
+})
+  
+                
+    
