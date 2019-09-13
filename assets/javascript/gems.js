@@ -17,13 +17,13 @@ var crystalImage = ["assets/images/blueCrystal.jpg", "assets/images/greenCrystal
         //playerScore = 0 
         score = 0;
         //update goal on display .text
-        $(".goal").text(goalNumber);
+        $(".goal").text("Goal Number: " + goalNumber);
         //Update wins and losses .text
-        $(".wins").text(winCount);
-        $(".losses").text(losses);
+        $(".wins").text("Wins: " + winCount);
+        $(".losses").text("Losses: " + losses);
         //update player score on page .text
         playerScore = 0
-        $(".playerScore").text(playerScore);
+        $(".playerScore").text("Player Score: " + playerScore);
     }
 
     //makeCrystalsFunction

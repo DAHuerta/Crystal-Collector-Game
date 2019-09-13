@@ -1,0 +1,53 @@
+html { 
+    background: url(https://www.telegraph.co.uk/content/dam/Travel/2018/August/Dream%20Canyon%20Zion%20National%20Park%20Utah.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+  body {
+      background: rgb(0, 0, 0, .5);
+      padding-left: 13%;
+  }
+
+  .instructions {
+      text-align: left;
+  }
+
+  p {
+      color: white;
+  }
+
+  .crystal {
+      text-align: center;
+      margin-right: 20px;
+      margin-top: 20px;
+  }
+
+  h1 {
+      text-align: center;
+      color: white;
+      font-size: 2.1rem;
+      padding-right: 120px;
+  }
+
+  .goal {
+    font-size: 30px;
+    color: white;
+  }
+
+  .playerScore {
+    font-size: 30px;
+    color: white; 
+  }
+
+  .wins {
+    font-size: 30px;
+    color: white;
+  }
+
+  .losses {
+    font-size: 30px;
+    color: white;
+  }
