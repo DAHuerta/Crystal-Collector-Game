@@ -14,7 +14,6 @@ var crystalImage = ["assets/images/blueCrystal.jpg", "assets/images/greenCrystal
         makeCrystals()
         //goal = between 19-120
         goalNumber = Math.floor((Math.random()) * 102) + 19;
-        console.log("goal #: ",goalNumber);
         //playerScore = 0 
         score = 0;
         //update goal on display .text
@@ -30,7 +29,6 @@ var crystalImage = ["assets/images/blueCrystal.jpg", "assets/images/greenCrystal
     //makeCrystalsFunction
     function makeCrystals() {
         //for loop 0-4
-
         for (var i = 0; i < crystalImage.length; i++){
             //create image tag
             var image = $("<img>");
@@ -38,33 +36,23 @@ var crystalImage = ["assets/images/blueCrystal.jpg", "assets/images/greenCrystal
             image.addClass("crystal");
             // random number 1-12
             image.attr("data-value", Math.floor(Math.random() * 12) +1);
-            // console.log("attr: ", image.attr("data-value"))
             //source .attr
             image.attr("src", crystalImage[i]);
-            //pick crystal images randomly
             //append image to page
-            $(".crystalContainer").append(image);
-            console.log("attr: ", image.attr("data-value"))
-        }
-        return ;
-       
+            $(".crystalContainer").append(image);            
+        }  
     }
 
 // Process
 $(document).ready(function() {
     //call reset game
     reset();
- 
+
     //document.on click
     $(".crystalContainer").on("click", ".crystal", function () {
-       // $(this);
-       console.log($(this).attr("data-value"));
        //parseint
        var imageVALUE = parseInt($(this).attr("data-value"));
-       playerScore = parseInt(playerScore);
        
-       // console.log(image.attr("data-value"));
-       console.log("playerscore: ", playerScore);
        //add to score
         playerScore += imageVALUE;
 
@@ -83,10 +71,7 @@ $(document).ready(function() {
             //reset game
             reset()
         }
-        console.log("playerscore: ", playerScore);
-    })
-    
-    
+    })    
 })
   
                 
