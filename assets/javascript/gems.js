@@ -1,7 +1,7 @@
 // Global variables
 var goalNumber = 0;
 var playerScore = 0;
-var wins = 0;
+var winCount = 0;
 var losses = 0;
 
 var crystalImage = ["assets/images/blueCrystal.jpg", "assets/images/greenCrystal.jpg", "assets/images/purpleCrystal.jpg", "assets/images/whiteCrystal.jpg"];
@@ -14,21 +14,23 @@ var crystalImage = ["assets/images/blueCrystal.jpg", "assets/images/greenCrystal
         makeCrystals()
         //goal = between 19-120
         goalNumber = Math.floor((Math.random()) * 102) + 19;
-        console.log(goalNumber);
+        console.log("goal #: ",goalNumber);
         //playerScore = 0 
         score = 0;
         //update goal on display .text
         $(".goal").text(goalNumber);
         //Update wins and losses .text
-        $(".wins").text(wins);
+        $(".wins").text(winCount);
         $(".losses").text(losses);
         //update player score on page .text
+        playerScore = 0
         $(".playerScore").text(playerScore);
     }
 
     //makeCrystalsFunction
     function makeCrystals() {
         //for loop 0-4
+
         for (var i = 0; i < crystalImage.length; i++){
             //create image tag
             var image = $("<img>");
@@ -36,42 +38,55 @@ var crystalImage = ["assets/images/blueCrystal.jpg", "assets/images/greenCrystal
             image.addClass("crystal");
             // random number 1-12
             image.attr("data-value", Math.floor(Math.random() * 12) +1);
+            // console.log("attr: ", image.attr("data-value"))
             //source .attr
             image.attr("src", crystalImage[i]);
             //pick crystal images randomly
             //append image to page
             $(".crystalContainer").append(image);
+            console.log("attr: ", image.attr("data-value"))
         }
+        return ;
+       
     }
+
 // Process
 $(document).ready(function() {
     //call reset game
-    reset()
-
+    reset();
+ 
     //document.on click
     $(".crystalContainer").on("click", ".crystal", function () {
-        $(this)
-        var crystalValue = ($(this).attr("data-value"))
-        //parseint
-            //add to score
-         crystalValue = parseInt(playerScore)
-        //check if won or loss
-        console.log(crystalValue)
+       // $(this);
+       console.log($(this).attr("data-value"));
+       //parseint
+       var imageVALUE = parseInt($(this).attr("data-value"));
+       playerScore = parseInt(playerScore);
+       
+       // console.log(image.attr("data-value"));
+       console.log("playerscore: ", playerScore);
+       //add to score
+        playerScore += imageVALUE;
 
+        $(".playerScore").text(playerScore)
+    
+         //check if won or loss
         if (playerScore === goalNumber) {
-            alert("CONGRATS! YOU WIN!!")
             //if won add to wins 
-            win++
+            winCount++;
+            alert("CONGRATS! YOU WIN!!");
+            reset()
         } else if (playerScore > goalNumber) {
-            alert("YOU LOSE!")
             //else losses
-            losses++
+            losses++;
+            alert("YOU LOSE!");
+            //reset game
+            reset()
         }
-        
+        console.log("playerscore: ", playerScore);
     })
     
-    //reset game
-    reset()
+    
 })
   
                 
